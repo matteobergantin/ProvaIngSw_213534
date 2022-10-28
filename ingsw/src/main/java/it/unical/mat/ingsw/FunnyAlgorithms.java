@@ -59,6 +59,13 @@ public class FunnyAlgorithms {
 		}
 	}
 
+	private int find(String src, char el) {
+		for (int i = 0; i < src.length(); ++i)
+			if (src.charAt(i) == el)
+				return i;
+		return -1;
+	}
+	
 	/**
 	 * Il metodo deve accettare una stringa e convertirla in un numero intero 
 	 * Le stringhe ben formate non contengono caratteri diversi da numeri, spazi finali e meno 
@@ -69,8 +76,27 @@ public class FunnyAlgorithms {
 	 * @return
 	 * @throws UnsupportedOperationException
 	 */
-	public int stringToIntConverter(String number) throws UnsupportedOperationException {
-		throw new UnsupportedOperationException("To be implemented");
+	public int stringToIntConverter(String number) {
+		final String acceptedChars = "0123456789";
+		
+		if (number.length() == 0) {
+			throw new IllegalArgumentException("Cannot convert empty String to int");
+		}
+		
+		boolean isNegative = number.charAt(0) == '-';
+		
+		if (isNegative)
+			number = number.substring(1);
+		
+		int out = 0;
+		for (int i = 0; i < number.length(); ++i) {
+			int idx = find(acceptedChars, number.charAt(i));
+			if (idx == -1)
+				throw new IllegalArgumentException("Number contains illegal character(s): \"" + number.charAt(i) + "\"");
+			out *= 10;
+			out += idx;
+		}
+		
+		return isNegative ? -out : out;
 	}
-
 }
