@@ -1,4 +1,4 @@
-package it.unical.mat.tests;
+package it.unical.mat.ingsw;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
