@@ -43,5 +43,8 @@ public class StringToIntTests {
 		_instance.stringToIntConverter("1000000");
 	}
 	
-
+	@Test (expected = NumberFormatException.class)
+	public void numberInRange2() {
+		_instance.stringToIntConverter("-1000000");
+	}
 }
