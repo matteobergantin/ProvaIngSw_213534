@@ -1,5 +1,5 @@
 # Eclipse build path
-target/
+ingsw/target/
 
 # Eclipse settings
-.settings/
+ingsw/.settings
