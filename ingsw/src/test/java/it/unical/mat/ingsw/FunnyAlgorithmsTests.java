@@ -2,10 +2,43 @@ package it.unical.mat.ingsw;
 
 import static org.junit.Assert.assertEquals;
 
+import org.joda.time.DateTime;
 import org.junit.*;
 
 public class FunnyAlgorithmsTests {
 	public static FunnyAlgorithms _instance = null;
+	public static long unixts = 0;
+	
+	@Before
+	public void printStartTime() {
+		DateTime startdt = new DateTime();
+		int month = startdt.getMonthOfYear();
+		int year = startdt.getYear();
+		int day = startdt.getDayOfMonth();
+		int hour = startdt.getHourOfDay();
+		int minute = startdt.getMinuteOfHour();
+		int second = startdt.getSecondOfMinute();
+		int milli = startdt.getMillisOfSecond();
+		String ts = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second + "." + milli;
+		unixts = startdt.getMillis();
+		System.out.println("Test initial timestamp: " + ts);
+	}
+	
+	@After
+	public void printEndTime() {
+		DateTime dt = new DateTime();
+		int month = dt.getMonthOfYear();
+		int year = dt.getYear();
+		int day = dt.getDayOfMonth();
+		int hour = dt.getHourOfDay();
+		int minute = dt.getMinuteOfHour();
+		int second = dt.getSecondOfMinute();
+		int milli = dt.getMillisOfSecond();
+		String ts = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second + "." + milli;
+		
+		System.out.println("Test final timestamp: " + ts);
+		System.out.println("Elapsed: " + (dt.getMillis() - unixts) + " ms\n");
+	}
 	
 	@BeforeClass
 	public static void initialize() {
