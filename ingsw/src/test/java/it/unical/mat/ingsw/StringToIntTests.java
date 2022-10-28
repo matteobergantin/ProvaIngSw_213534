@@ -69,4 +69,17 @@ public class StringToIntTests {
 	public void numberInRange2() {
 		_instance.stringToIntConverter("-1000000");
 	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void selectionSortDoesNotAcceptInvalidOrder() {
+		int[] arrayTest = {1, 2, 3};
+		_instance.selectionSort(arrayTest, -10);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void selectionSortDoesNotAcceptInvalidOrder2() {
+		int[] arrayTest = {1, 2, 3};
+		_instance.selectionSort(arrayTest, 10);
+	}
+	
 }

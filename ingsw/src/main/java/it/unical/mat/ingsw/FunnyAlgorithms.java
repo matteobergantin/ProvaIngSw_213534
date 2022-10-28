@@ -59,6 +59,7 @@ public class FunnyAlgorithms {
 		}
 	}
 
+	// Funzione mia
 	private int find(String src, char el) {
 		for (int i = 0; i < src.length(); ++i)
 			if (src.charAt(i) == el)
