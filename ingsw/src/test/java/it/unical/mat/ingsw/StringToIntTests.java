@@ -19,7 +19,12 @@ public class StringToIntTests {
 
 	@Test (expected = IllegalArgumentException.class)
 	public void floatNumbersNotAllowed() {
-		_instance.stringToIntConverter("11.23");
+		_instance.stringToIntConverter("11.2344");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void emptyStringNotAllowed() {
+		_instance.stringToIntConverter("");
 	}
 	
 	@Test
@@ -33,6 +38,23 @@ public class StringToIntTests {
 		
 		for (int i = 0; i < 100; ++i) {
 			Integer num = (int)(Math.random() * -32768);
+			String strNum = num.toString();
+			assertEquals(_instance.stringToIntConverter(strNum), num.intValue());
+		}
+	}
+	
+	@Test
+	public void positiveNumbersWork() {
+		// Static tests
+		assertEquals(_instance.stringToIntConverter("10"), 10);
+		assertEquals(_instance.stringToIntConverter("20"), 20);
+		assertEquals(_instance.stringToIntConverter("30"), 30);
+		assertEquals(_instance.stringToIntConverter("40"), 40);
+		assertEquals(_instance.stringToIntConverter("10000"), 10000);
+		
+		// Dynamic tests
+		for (int i = 0; i < 100; ++i) {
+			Integer num = (int)(Math.random() * 32767);
 			String strNum = num.toString();
 			assertEquals(_instance.stringToIntConverter(strNum), num.intValue());
 		}
