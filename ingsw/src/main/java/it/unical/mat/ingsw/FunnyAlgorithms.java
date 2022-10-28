@@ -97,6 +97,11 @@ public class FunnyAlgorithms {
 			out += idx;
 		}
 		
-		return isNegative ? -out : out;
+		out = isNegative ? -out : out;
+		
+		if (out < -32768 || out > 32767)
+			throw new NumberFormatException("Number must be in the range [-32768, 32767]");
+
+		return out;
 	}
 }
