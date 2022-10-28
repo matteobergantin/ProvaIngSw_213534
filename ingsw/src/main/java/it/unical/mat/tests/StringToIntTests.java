@@ -24,14 +24,24 @@ public class StringToIntTests {
 	
 	@Test
 	public void negativeNumbersWork() {
+		// Basic static tests
+		
 		assertEquals(_instance.stringToIntConverter("-12"), -12);
 		assertEquals(_instance.stringToIntConverter("-123"), -123);
 		assertEquals(_instance.stringToIntConverter("-334"), -334);
 		assertEquals(_instance.stringToIntConverter("-156"), -156);
+		
+		for (int i = 0; i < 100; ++i) {
+			Integer num = (int)(Math.random() * -32768);
+			String strNum = num.toString();
+			assertEquals(_instance.stringToIntConverter(strNum), num.intValue());
+		}
 	}
 
 	@Test (expected = NumberFormatException.class)
 	public void numberInRange() {
 		_instance.stringToIntConverter("1000000");
 	}
+	
+
 }
