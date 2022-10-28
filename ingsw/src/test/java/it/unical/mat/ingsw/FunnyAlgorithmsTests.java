@@ -110,4 +110,33 @@ public class FunnyAlgorithmsTests {
 				assertEquals(unsortedArrays[i][j], sortedArrays[i][j]);
 		}
 	}
+	
+	@Test
+	public void selectionSortWithOrder0Works() {
+		int[][] unsortedArrays = {
+			{ 3, 1, 2, 4 },
+			{ 10, 11, 12 },
+			{ 13, 11, 10 },
+			{ 1000, 1, -50 },
+			{ 6, 5 }
+		};
+
+		int[][] sortedArrays = {
+			{ 4, 3, 2, 1 },
+			{ 12, 11, 10 },
+			{ 13, 11, 10 },
+			{ 1000, 1, -50 },
+			{ 6, 5 }
+		};
+		
+		if (sortedArrays.length != unsortedArrays.length)
+			throw new RuntimeException("JUNIT TESTING: sortedArrays length != unsortedArrays length");
+		
+		for (int i = 0; i < unsortedArrays.length; i++) {
+			_instance.selectionSort(unsortedArrays[i], 0);
+			
+			for (int j = 0; j < unsortedArrays[i].length; ++j)
+				assertEquals(unsortedArrays[i][j], sortedArrays[i][j]);
+		}
+	}
 }
