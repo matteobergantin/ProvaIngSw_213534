@@ -1,10 +1,10 @@
 package it.unical.mat.ingsw;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.*;
-import it.unical.mat.ingsw.FunnyAlgorithms;
 
-public class StringToIntTests {
+import org.junit.*;
+
+public class FunnyAlgorithmsTests {
 	public static FunnyAlgorithms _instance = null;
 	
 	@BeforeClass
@@ -81,5 +81,6 @@ public class StringToIntTests {
 		int[] arrayTest = {1, 2, 3};
 		_instance.selectionSort(arrayTest, 10);
 	}
+	
 	
 }
